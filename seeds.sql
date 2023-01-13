@@ -8,8 +8,8 @@ VALUES("Administration/operations"),
 
 INSERT INTO roles (title,salary, department_id,)
 VALUES("Chief Executive Officer",800000, 1),
-("Chief Operating Officer," 400000, 2),
-("Chief Technology Officer," 300000, 3),
+("Chief Operating Officer",400000, 2),
+("Chief Technology Officer",300000, 3),
 ("President",100000,4),
 ("Executive Assistant", 82000, 5),
 ("Market Manager", 140000, 6),
