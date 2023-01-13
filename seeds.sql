@@ -21,4 +21,5 @@ VALUES("Chief Executive Officer",800000, 1),
 ("Customer Service Representative",50000,12)
 
 
-INSERT
+INSERT INTO employees (first_name,last_name,role_id,manager_id)
+VALUES()
