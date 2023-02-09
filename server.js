@@ -29,7 +29,7 @@ connection.connect(err => {
 const mainMenu = () => {
   inquirer
     .prompt([
-      {
+    {
         type: "list",
         name: "action",
         message: "What would you like to do?",
