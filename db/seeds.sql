@@ -19,7 +19,7 @@ VALUES("Chief Executive Officer",800000, 1),
 ("Marketing Specialist", 70000,10),
 ("Accountant" 60000,11),
 ("Sales Representative",70000,12),
-("Customer Service Representative",50000,12)
+("Customer Service Representative",50000,13)
 
 
 INSERT INTO employees (first_name,last_name,role_id,manager_id)
