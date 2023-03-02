@@ -25,7 +25,7 @@ const viewRoles = () => {
     startMenu();
   });
 };
-
+// Add a new employee
 const newEmploy = () => {
   db.query("SELECT * FROM role", (err, res) => {
     if (err) throw err;
@@ -62,7 +62,65 @@ const newEmploy = () => {
     startMenu();
   });
 };
+// Add a role
+const addRole = () => {
+    db.query ('SELECT * FROM department', (err,res) => {
+        if(err) throw err
+        inquirer.prompt([
+            {
+                type:'input',
+                name: 'title',
+                message: 'What is the name of the role'
+            },
+            {
+                type:'input',
+                name:'salary',
+                message:'What is the salary of this role'
+            },
+            {
+                type: 'list',
+                name: 'department',
+                message: 'Which department does the role belong to?',
+                choices: res.map(department => department.name)
+            }
+        ]) .then (data => {
+            let deptName = res.find(department => department.name === data.department)
+            db.query ('INSERT INTO role SET ?', {
+                title: data.title,
+                salary: data.salary,
+                department_id: deptName.id,
+            })
 
+            startMenu()
+
+        })
+
+    })
+
+};
+// Add a department 
+const addDept = () => {
+    db.query('SELECT * FROM department',(err,res) => {
+    if(err) throw err
+    inquirer.prompt([
+        {
+            type: 'input',
+            name:'name',
+            message:'What is the new Department called?'
+        },
+    ])  .then (data => {
+        db.query ('INSERT INTO department SET ?', {
+            name: data.name,
+        })
+    })
+    startMenu()
+    })
+};
+       
+    
+
+            
+    
 function startPrompt() {
   inquirer
     .prompt([
