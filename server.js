@@ -3,7 +3,7 @@ const express = require('express');
 // import and require mysql2
 const mysql = require('mysql2');
 
-const table = require('console.table')
+const table = require('console.table');
 
 require('dotenv').config();
 
@@ -18,10 +18,14 @@ const db = mysql.createConnection(
     {
         host: 'localhost',
         // MySQL username,
-        user: 'root',
-        password: 'Kansasis123@',
-        database: 'company_db'
+        user: process.env.DB_USER,
+
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
        
         
     },
+    console.log("Connected to the database!")
 );
+
+module.exports=db;

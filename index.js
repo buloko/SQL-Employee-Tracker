@@ -7,7 +7,7 @@ function viewEmploy() {
   db.query("SELECT * FROM employee", (err, res) => {
     if (err) throw err;
     console.table(res);
-    startMenu();
+    startPrompt();
   });
 }
 //function to view all departments
@@ -15,37 +15,44 @@ const viewDepart = () => {
   db.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
     console.table(res);
-    startMenu();
+    startPrompt();
   });
 };
 const viewRoles = () => {
   db.query("SELECT * FROM roles", (err, res) => {
     if (err) throw err;
     console.table(res);
-    startMenu();
+    startPrompt();
   });
 };
+
 // Add a new employee
 const newEmploy = () => {
-  db.query("SELECT * FROM role", (err, res) => {
+  db.query("SELECT * FROM employee", (err, res) => {
     if (err) throw err;
     inquirer
       .prompt([
         {
-          type: input,
+          type: 'input',
           name: "firstName",
           message: "What is the employee's first name?",
         },
         {
-          type: input,
+          type: 'input',
           name: "lastName",
           message: "What is the employee's last name?",
         },
         {
-          type: list,
-          name: role,
+          type: 'list',
+          name: "role",
           message: "What is the employee's role?",
-          choices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+          choices:res.map(role => role.title)
+        },
+        {
+          type: 'list',
+          name: 'managerId',
+          message: 'What is the ID of the manager?',
+          choices: [1,2,3,5,7]
         },
       ])
       .then((data) => {
@@ -59,11 +66,11 @@ const newEmploy = () => {
           };
       });
 
-    startMenu();
+    startPrompt();
   });
 };
 // Add a role
-const addRole = () => {
+const newRole = () => {
     db.query ('SELECT * FROM department', (err,res) => {
         if(err) throw err
         inquirer.prompt([
@@ -91,7 +98,7 @@ const addRole = () => {
                 department_id: deptName.id,
             })
 
-            startMenu()
+            startPrompt()
 
         })
 
@@ -99,7 +106,7 @@ const addRole = () => {
 
 };
 // Add a department 
-const addDept = () => {
+const newDept = () => {
     db.query('SELECT * FROM department',(err,res) => {
     if(err) throw err
     inquirer.prompt([
@@ -113,8 +120,10 @@ const addDept = () => {
             name: data.name,
         })
     })
-    startMenu()
+    startPrompt()
     })
+
+    
 };
        
     
@@ -137,6 +146,7 @@ function startPrompt() {
           "Update employee role",
           "Quit",
         ],
+        loop: false,
       },
     ])
     .then(function (res) {
@@ -176,22 +186,3 @@ connection.connect((err) => {
   mainMenu();
 });
 
-const mainMenu = () => {
-  inquirer.prompt([
-    {
-      type: "list",
-      name: "action",
-      message: "What would you like to do?",
-      choices: [
-        "View all departments",
-        "View all roles",
-        "View all employees",
-        "Add a department",
-        "Add a role",
-        "Add an employee",
-        "Update an employee role",
-        "Exit",
-      ],
-    },
-  ]);
-};
