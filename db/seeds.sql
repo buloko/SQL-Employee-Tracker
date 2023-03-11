@@ -1,15 +1,17 @@
 INSERT INTO department (name)
-VALUES("Administration/operations"),
+VALUES
+("Administration/operations"),
 ("Research and Devlopment"),
 ("Marketing and Sales"),
 ("Human resources"),
 ("Legal"),
 ("Accounting and Finance")
 
-INSERT INTO roles (title,salary, department_id,)
-VALUES("Chief Executive Officer",800000, 1),
+INSERT INTO roles (title, salary, department_id)
+VALUES
+("Chief Executive Officer",800000, 1),
 ("Chief Operating Officer",400000, 2),
-("Chief Information Ofiicer",300000,3)
+("Chief Information Officer",300000,3)
 ("Chief Technology Officer",300000, 4),
 ("President",100000,5),
 ("Executive Assistant", 82000, 6),
@@ -23,7 +25,8 @@ VALUES("Chief Executive Officer",800000, 1),
 
 
 INSERT INTO employees (first_name,last_name,role_id,manager_id)
-VALUES("Mattie", "Rhea", 1, NULL),
+VALUES
+("Mattie", "Rhea", 1, NULL),
 ("Leighton","Jeana", 2, 1),
 ("Lance","Vera", 3, 1 ),
 ("Brannon", "Gaz", 4, 3),
