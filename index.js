@@ -1,7 +1,6 @@
-const db = require("./server.js");
 const inquirer = require("inquirer");
-const { query } = require("express");
-const cTable = require("console.table");
+const db = require('./connection');
+
 // function to view all employees
 function viewEmploy() {
   db.query("SELECT * FROM employee", (err, res) => {
@@ -139,6 +138,7 @@ function startPrompt() {
         message: "What would you like to do?",
         choices: [
           "View all departments",
+          "View all roles",
           "View all employees",
           "Create a new department",
           "Create a new role",
@@ -180,9 +180,5 @@ function startPrompt() {
 
 startPrompt();
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to the database");
-  mainMenu();
-});
+
 
