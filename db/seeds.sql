@@ -1,3 +1,5 @@
+USE company_db;
+
 INSERT INTO department (name)
 VALUES
 ("Administration/operations"),
@@ -15,15 +17,13 @@ VALUES
 ("Chief Technology Officer", 300000, 4),
 ("President", 100000,5),
 ("Executive Assistant", 82000,6),
-("Market Manager", 140000,7),
-("Product Manager", 120000,8),
-("Project Manager", 100000,9),
-("Marketing Specialist", 70000,10),
-("Accountant", 60000,11),
-("Sales Representative",70000,12),
-("Customer Service Representative",50000,13);
-
-
+("Market Manager", 140000,3),
+("Product Manager", 120000,3),
+("Project Manager", 100000,2),
+("Marketing Specialist", 70000,3),
+("Accountant", 60000,6),
+("Sales Representative",70000,3),
+("Customer Service Representative",50000,3);
 
 INSERT INTO employees (first_name,last_name,role_id,manager_id)
 VALUES
